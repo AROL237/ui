@@ -23,10 +23,13 @@ export default function PaymentForm({
     setConfirmation((old) => !old);
   };
   return (
-    <div className=" mx-auto  rounded-lg bg-transparent  md:max-w-[365px]  p-4">
-      <div className=" flex flex-col gap-5 uppercase ">
+    <div className=" mx-auto   rounded-lg bg-transparent  md:max-w-[365px]  p-4">
+      <div className=" flex flex-col gap-5 uppercase text-md text-neutral-dark-grayish-voilet ">
         <div className="flex flex-col gap-1  ">
-          <label id="for-owner-name" className=" font-semibold">
+          <label
+            id="for-owner-name"
+            className=" text-gray-900 text-xs font-extrabold "
+          >
             Card owner
           </label>
           <input
@@ -39,7 +42,10 @@ export default function PaymentForm({
           />
         </div>
         <div className="flex flex-col gap-1 ">
-          <label id="for-owner-name uppercase " className=" font-semibold">
+          <label
+            id="for-owner-name uppercase "
+            className=" text-gray-900 text-xs font-extrabold "
+          >
             Card number
           </label>
           <input
@@ -59,10 +65,16 @@ export default function PaymentForm({
         </div>
         <div className="">
           <div className=" grid grid-cols-3 ">
-            <label id="for-owner-name " className="col-span-2 font-semibold ">
+            <label
+              id="for-owner-name "
+              className="col-span-2 text-gray-900 text-xs font-extrabold "
+            >
               exp.date (MM/YY)
             </label>
-            <label id="for-cc" className="font-semibold ">
+            <label
+              id="for-cc"
+              className="text-gray-900 text-xs font-extrabold "
+            >
               cvc
             </label>
           </div>
@@ -75,6 +87,9 @@ export default function PaymentForm({
                     name="expired_month"
                     onChange={handleChange}
                     placeholder="MM"
+                    inputMode="numeric"
+                    pattern="\d*"
+                    title="Please enter a valid month number"
                     value={cardData.expired_month}
                     maxLength={2}
                     minLength={2}
@@ -86,6 +101,9 @@ export default function PaymentForm({
                     onChange={handleChange}
                     value={cardData.expired_year}
                     maxLength={2}
+                    inputMode="numeric"
+                    pattern="\d*"
+                    title="Please enter a valid year number"
                     minLength={2}
                     placeholder="YY"
                     className="apearence-none ring-1 w-[60px]  rounded py-1 px-2"
@@ -100,6 +118,8 @@ export default function PaymentForm({
                   name="cvc"
                   onChange={handleChange}
                   value={cardData.cvc}
+                  inputMode="numeric"
+                  pattern="\d*"
                   maxLength={3}
                   minLength={3}
                   placeholder="e.g 123"

@@ -5,12 +5,12 @@ import ConfirmationComponent from "./ConfirmationComponent";
 
 export default function CardDetailsComponent({ confirm, setConfirmation }) {
   const [cardData, setCardData] = React.useState({
-    owner: "john doe",
+    owner: "",
     number: "",
-    expired_month: "09",
-    expired_year: "25",
+    expired_month: "",
+    expired_year: "",
     arr_number: ["0000", "0000", "0000", "0000"],
-    cvc: "123",
+    cvc: "",
   });
 
   function convertCardNumberToString() {
@@ -57,7 +57,7 @@ export default function CardDetailsComponent({ confirm, setConfirmation }) {
       <div className="h-full absolute w-full md:grid md:grid-cols-3  ">
         <div
           id="bg-main-mobile"
-          className="h-[240px] pt-[32px] w-full md:col-span-1  md:h-lvh  md:w-full "
+          className="h-[240px] pt-[32px] w-full md:col-span-1  md:h-full  md:w-full "
         >
           <div className="  flex h-full w-full  px-3 xs:justify-centers sm:justify-center md:flex md:flex-col md:translate-x-1/4   md:gap-[35px]   ">
             {/* desktop-view card font */}
@@ -75,10 +75,11 @@ export default function CardDetailsComponent({ confirm, setConfirmation }) {
                   </div>
                   <div className="text-[9px] uppercase md:text-[11px]  grid grid-cols-4 md:pt-6">
                     <div className="card-owner-name font-normal col-span-3 line-clamp-2">
-                      {cardData.owner}
+                      {cardData.owner ? cardData.owner : "John Doe"}
                     </div>
                     <div className="card-card-date col-span-1 flex float-end font-extrabold justify-end md:text-center ">
-                      {cardData.expired_month}/{cardData.expired_year}
+                      {cardData.expired_month ? cardData.expired_month : "00"}/
+                      {cardData.expired_year ? cardData.expired_year : "00"}
                     </div>
                   </div>
                 </div>

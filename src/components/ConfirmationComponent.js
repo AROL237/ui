@@ -5,7 +5,7 @@ import ButtonComponent from "./ButtonComponent";
 
 export default function ConfirmationComponent({ setConfirmation }) {
   const handleSubmit = () => {
-    setConfirmation(old=>!old);
+    setConfirmation((old) => !old);
   };
   return (
     <>

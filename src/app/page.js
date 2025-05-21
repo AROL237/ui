@@ -1,18 +1,18 @@
 "use client";
 import React from "react";
-import ConfirmationComponent from "@/components/ConfirmationComponent";
 import CardDetailsComponent from "@/components/CardDetailsComponent";
-import PaymentForm from "@/components/PaymentForm";
 
 export default function Home() {
-  const [confirm, setConfirmation] = React.useState();
+  const [confirm, setConfirmation] = React.useState(false);
   return (
     <>
-      <main className={`flex `}>
-        <CardDetailsComponent
-          setConfirmation={setConfirmation}
-          confirm={confirm}
-        />
+      <main className={``}>
+        <div className="h-full absolute w-full md:grid md:grid-cols-3">
+          <CardDetailsComponent
+            setConfirmation={setConfirmation}
+            confirm={confirm}
+          />
+        </div>
       </main>
     </>
   );
