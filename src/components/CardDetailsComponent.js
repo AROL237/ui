@@ -92,7 +92,7 @@ export default function CardDetailsComponent({ confirm, setConfirmation }) {
             >
               <div className=" flex translate-y-[69px] text-neutral-200 px-2 font-light text-[12px] w-full flex-row-reverse  md:translate-y-[110px] md:text-[15px]  ">
                 <span className="px-[16px] tracking-widest">
-                  {cardData.cvc}
+                  {cardData.cvc ? cardData : "00"}
                 </span>
               </div>
             </div>
