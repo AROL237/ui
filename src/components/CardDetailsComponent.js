@@ -5,36 +5,47 @@ import ConfirmationComponent from "./ConfirmationComponent";
 
 export default function CardDetailsComponent({ confirm, setConfirmation }) {
   const [cardData, setCardData] = React.useState({
-    owner: "SIGNING NZONEM AROL junior boy",
-    number: "0972014523456789",
+    owner: "john doe",
+    number: "",
     expired_month: "09",
     expired_year: "25",
     arr_number: ["0000", "0000", "0000", "0000"],
-    cvc: "456",
+    cvc: "123",
   });
 
   function convertCardNumberToString() {
     let str_num = cardData.number.toString();
+    if (str_num.length < 16) {
+      let num = 16 - str_num.length;
+      let zero = "";
+      for (let index = 0; index < num; index++) {
+        zero.concat("0");
+      }
+      str_num = zero.concat(str_num);
+    }
+    if (str_num.length === 0) {
+      str_num = "0000000000000000";
+    }
     setCardData((data) => {
       return {
         ...data,
-        arr_number: [
-          str_num.substring(0, 4),
-          str_num.substring(4, 8),
-          str_num.substring(8, 12),
-          str_num.substring(12, 16),
-        ],
+        arr_number: str_num.match(/.{1,4}/g) || [],
+        // arr_number: [
+        //   str_num.substring(0, 4),
+        //   str_num.substring(4, 8),
+        //   str_num.substring(8, 12),
+        //   str_num.substring(12, 16),
+        // ],
       };
     });
   }
   React.useEffect(() => {
-    if (cardData.number.toString().length<15){
-      let num= 15-cardData.arr_number.length
-      let zero=""
+    if (cardData.number.toString().length < 15) {
+      let num = 15 - cardData.arr_number.length;
+      let zero = "";
       for (let index = 0; index < num; index++) {
-        zero.concat("0")
+        zero.concat("0");
       }
-      
     }
     convertCardNumberToString();
   }, [cardData.number]);

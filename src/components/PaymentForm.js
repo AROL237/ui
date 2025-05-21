@@ -10,7 +10,12 @@ export default function PaymentForm({
 }) {
   const handleChange = (event) => {
     const { type, value, name } = event.target;
-    console.log(event);
+    let data = value;
+    if (name === "number") {
+      data = value.replace(/\D/g, "").slice(0, 16);
+      setCardData((prev_data) => ({ ...prev_data, [name]: data }));
+      return;
+    }
     setCardData((prev_data) => ({ ...prev_data, [name]: value }));
   };
 
@@ -20,8 +25,10 @@ export default function PaymentForm({
   return (
     <div className=" mx-auto  rounded-lg bg-transparent  md:max-w-[365px]  p-4">
       <div className=" flex flex-col gap-5 uppercase ">
-        <div className="flex flex-col gap-1">
-          <label id="for-owner-name">Card owner</label>
+        <div className="flex flex-col gap-1  ">
+          <label id="for-owner-name" className=" font-semibold">
+            Card owner
+          </label>
           <input
             type="text"
             name="owner"
@@ -31,26 +38,33 @@ export default function PaymentForm({
             className="apearence-none ring-1 rounded p-1"
           />
         </div>
-        <div className="flex flex-col gap-1">
-          <label id="for-owner-name uppercase ">Card number</label>
+        <div className="flex flex-col gap-1 ">
+          <label id="for-owner-name uppercase " className=" font-semibold">
+            Card number
+          </label>
           <input
-            type="text "
+            type="tel "
             name="number"
             onChange={handleChange}
             security="true"
+            pattern="\S+\d*"
+            placeholder="e.g 0123 4567 8910 1112"
+            inputmode="numeric"
+            title="Please enter a valid card number"
             value={cardData.number}
-            maxLength={15}
-            minLength={15}
-            placeholder="0123456789"
+            maxLength={16}
+            minLength={16}
             className="apearence-none ring-1 rounded p-1"
           />
         </div>
         <div className="">
           <div className=" grid grid-cols-3 ">
-            <label id="for-owner-name" className="col-span-2  ">
+            <label id="for-owner-name " className="col-span-2 font-semibold ">
               exp.date (MM/YY)
             </label>
-            <label id="for-cc">cvc</label>
+            <label id="for-cc" className="font-semibold ">
+              cvc
+            </label>
           </div>
           <div className="grid grid-cols-3  ">
             <div className="col-span-2">
