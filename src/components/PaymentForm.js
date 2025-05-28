@@ -14,10 +14,11 @@ export default function PaymentForm({
     if (name === "number") {
       data = value.replace(/\D/g, "").slice(0, 16);
       setCardData((prev_data) => ({ ...prev_data, [name]: data }));
-      return;
     }
-    if (name === "expired_month" || "expired_year" || "cvc")
+    if (name === "expired_month" || "expired_year" || "cvc") {
       data = value.replace(/\D/g, "");
+      setCardData((prev_data) => ({ ...prev_data, [name]: data }));
+    }
     setCardData((prev_data) => ({ ...prev_data, [name]: data }));
   };
 
@@ -40,7 +41,7 @@ export default function PaymentForm({
             onChange={handleChange}
             value={cardData.owner}
             placeholder="e.g John hamadou"
-            className="apearence-none ring-1 rounded p-1"
+            className="apearence-none ring-1 rounded p-1 text-slate-700"
           />
         </div>
         <div className="flex flex-col gap-1 ">
@@ -62,7 +63,7 @@ export default function PaymentForm({
             value={cardData.number}
             maxLength={16}
             minLength={16}
-            className="apearence-none ring-1 rounded p-1"
+            className="apearence-none ring-1 rounded p-1 text-slate-700"
           />
         </div>
         <div className="">
@@ -95,7 +96,7 @@ export default function PaymentForm({
                     value={cardData.expired_month}
                     maxLength={2}
                     minLength={2}
-                    className="apearence-none ring-1 px-2 w-[60px]  rounded p-1  "
+                    className="apearence-none ring-1 px-2 w-[60px]  rounded p-1 text-slate-700  "
                   />
                   <input
                     type="text"
@@ -108,7 +109,7 @@ export default function PaymentForm({
                     title="Please enter a valid year number"
                     minLength={2}
                     placeholder="YY"
-                    className="apearence-none ring-1 w-[60px]  rounded py-1 px-2"
+                    className="apearence-none ring-1 w-[60px]  rounded py-1 px-2 text-slate-700"
                   />
                 </div>
               </div>
@@ -125,7 +126,7 @@ export default function PaymentForm({
                   maxLength={3}
                   minLength={3}
                   placeholder="e.g 123"
-                  className="flex float-end ring-1 w-full rounded p-1 px-2 "
+                  className="flex float-end ring-1 w-full rounded p-1 px-2 text-slate-700"
                 />
               </div>
             </div>

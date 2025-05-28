@@ -30,12 +30,6 @@ export default function CardDetailsComponent({ confirm, setConfirmation }) {
       return {
         ...data,
         arr_number: str_num.match(/.{1,4}/g) || [],
-        // arr_number: [
-        //   str_num.substring(0, 4),
-        //   str_num.substring(4, 8),
-        //   str_num.substring(8, 12),
-        //   str_num.substring(12, 16),
-        // ],
       };
     });
   }
@@ -49,6 +43,8 @@ export default function CardDetailsComponent({ confirm, setConfirmation }) {
     }
     convertCardNumberToString();
   }, [cardData.number]);
+
+  console.log(cardData.owner);
 
   React.useEffect(() => {}, [confirm]);
 
