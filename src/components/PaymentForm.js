@@ -16,7 +16,9 @@ export default function PaymentForm({
       setCardData((prev_data) => ({ ...prev_data, [name]: data }));
       return;
     }
-    setCardData((prev_data) => ({ ...prev_data, [name]: value }));
+    if (name === "expired_month" || "expired_year" || "cvc")
+      data = value.replace(/\D/g, "");
+    setCardData((prev_data) => ({ ...prev_data, [name]: data }));
   };
 
   const handleSubmit = () => {
