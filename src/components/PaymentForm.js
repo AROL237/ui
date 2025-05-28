@@ -19,7 +19,7 @@ export default function PaymentForm({
       data = value.replace(/\D/g, "");
       setCardData((prev_data) => ({ ...prev_data, [name]: data }));
     }
-    setCardData((prev_data) => ({ ...prev_data, [name]: data }));
+    setCardData((prev_data) => ({ ...prev_data, [name]: value }));
   };
 
   const handleSubmit = () => {
