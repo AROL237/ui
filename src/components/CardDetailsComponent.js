@@ -44,8 +44,6 @@ export default function CardDetailsComponent({ confirm, setConfirmation }) {
     convertCardNumberToString();
   }, [cardData.number]);
 
-  console.log(cardData.owner);
-
   React.useEffect(() => {}, [confirm]);
 
   return (
